@@ -39,7 +39,7 @@ function calculateScore() {
     //Calculate Profit
     var profit = revenue - budget
     //Calculate final score
-    var score = (revenue / budget).toFixed(2)
+    var score = parseInt((revenue / budget))
     //show the final stats
     document.getElementById("lead").innerHTML = leads;
     document.getElementById("customers").innerHTML = customers;
