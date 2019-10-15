@@ -1,3 +1,9 @@
+<!--
+    Client Value Calculator
+    By: Ting-Wei Lin
+    2019
+-->
+
 <!DOCTYPE html>
 <html>
 <title>Hypewell Client Value Calculator</title>
@@ -17,7 +23,8 @@
         # of Customers based on conversion: <span id = "customers"></span><br>
         Monthly Revenue: <span id = "revenue"></span><br><br>
         Profit generated with ads budget: <span id ="profit"></span><br>
-        Final Score: <span id = "score"></span><br>
+
+        Final ROI: <span id = "score"></span><br>
         This Means: <span id = "meaning"></span><br>
         <input type="reset" value="Reset" />
     </form>
@@ -44,20 +51,20 @@ function calculateScore() {
     document.getElementById("lead").innerHTML = leads;
     document.getElementById("customers").innerHTML = customers;
     document.getElementById("revenue").innerHTML = "$" + revenue;
-    document.getElementById("score").innerHTML = score;
+    document.getElementById("score").innerHTML = score + " X";
     document.getElementById("profit").innerHTML = profit;
     //show value based on ratio
-    if(score < 5){
-        document.getElementById("meaning").innerHTML= "Do not sign it"
+    if(score < 1){
+        document.getElementById("meaning").innerHTML= "Bad"
     }
-    else if(score > 5 && score < 7){
-        document.getElementById("meaning").innerHTML = "Risky, but worth a try."
+    else if(score > 1 && score < 2){
+        document.getElementById("meaning").innerHTML = "Not Bad"
     }
-    else if(score > 7 && score < 9){
-        document.getElementById("meaning").innerHTML = "It has potential."
+    else if(score > 2 && score < 5){
+        document.getElementById("meaning").innerHTML = "Pretty Good"
     }
-    else if(score > 10){
-        document.getElementById("meaning").innerHTML = "Just sign it, Period."
+    else if(score > 5){
+        document.getElementById("meaning").innerHTML = "Extraordinary"
     }
     else{
         alert("Please Fill in everything correctly")
