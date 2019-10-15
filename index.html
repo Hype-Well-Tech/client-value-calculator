@@ -10,14 +10,14 @@
         Average Conversion Rate(%): <input type="text" name="conversion" size="10"><br>
 
 
-        <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br>
+        <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br><br>
 
         <!--Result-->
-        Monthly Aquired Leads based on ads budget: <input type="text" name="lead" size="10"><br>
-        # of Customers based on conversion:<input type="text" name="customers" size="10"> <br>
-        Monthly Revenue: <input type="text" name="revenue" size="10"><br>
-        Final Score: <input type="text" name="score" size="10"><br>
-        This Means: <input type="text" name="meaning" size="25"><br>
+        Monthly Aquired Leads based on ads budget: <span id="lead"></span><br>
+        # of Customers based on conversion:<span id = "customers"></span><br>
+        Monthly Revenue: <span id = "revenue"></span><br><br>
+        Final Score: <span id = "score"></span><br>
+        This Means: <span id = "meaning"></span><br>
         <input type="reset" value="Reset" />
     </form>
 
@@ -33,6 +33,7 @@ function calculateScore() {
 
     var leads = Math.floor(budget/cpa)
 
+
     //Calculate the monthly aquired customers
 
     var customers = Math.floor(leads*(conversion/100))
@@ -46,23 +47,24 @@ function calculateScore() {
 
     //show the final stats
 
-    document.cvcform.lead.value = leads
-    document.cvcform.customers.value = customers
-    document.cvcform.revenue.value = revenue
-    document.cvcform.score.value = score
+    document.getElementById("lead").innerHTML = leads;
+    document.getElementById("customers").innerHTML = customers;
+    document.getElementById("revenue").innerHTML = "$" + revenue;
+    document.getElementById("score").innerHTML = score;
+
 
     //show value based on ratio
     if(score < 5){
-        document.cvcform.meaning.value = "No."
+        document.getElementById("meaning").innerHTML= "Do not sign it"
     }
     else if(score > 5 && score < 7){
-        document.cvcform.meaning.value = "Risky, but worth a try."
+        document.getElementById("meaning").innerHTML = "Risky, but worth a try."
     }
     else if(score > 7 && score < 9){
-        document.cvcform.meaning.value = "Not Bad."
+        document.getElementById("meaning").innerHTML = "It has potential."
     }
     else if(score > 10){
-        document.cvcform.meaning.value = "Sign it, Period."
+        document.getElementById("meaning").innerHTML = "Just sign it, Period."
     }
     else{
         alert("Please Fill in everything correctly")
