@@ -16,6 +16,7 @@
         Monthly Aquired Leads based on ads budget: <span id="lead"></span><br>
         # of Customers based on conversion:<span id = "customers"></span><br>
         Monthly Revenue: <span id = "revenue"></span><br><br>
+        Total Monthly Profit: <span id ="profit"></span><br>
         Final Score: <span id = "score"></span><br>
         This Means: <span id = "meaning"></span><br>
         <input type="reset" value="Reset" />
@@ -35,13 +36,16 @@ function calculateScore() {
     var customers = Math.floor(leads*(conversion/100))
     //Calculate Revenue
     var revenue = customers * atp
+    //Calculate Profit
+    var profit = revenue - budget
     //Calculate final score
-    var score = (revenue / budget).toFixed(1)
+    var score = (revenue / budget).toFixed(2)
     //show the final stats
     document.getElementById("lead").innerHTML = leads;
     document.getElementById("customers").innerHTML = customers;
     document.getElementById("revenue").innerHTML = "$" + revenue;
     document.getElementById("score").innerHTML = score;
+    document.getElementById("profit").innerHTML = profit;
     //show value based on ratio
     if(score < 5){
         document.getElementById("meaning").innerHTML= "Do not sign it"
