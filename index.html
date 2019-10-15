@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html>
+<title>Hypewell Client Value Calculator</title>
 <body>
 
-<h2>Value Calculator</h2>
+    <form name="cvcform">
+        Monthly Ads Budget($): <input type="text" name="budget" size="10"><br>
+        Cost per Acquisition($): <input type="text" name="cpa" size="10"><br>
+        Average Ticket Price($): <input type="text" name="ticket" size="10"><br>
+        Average Conversion Rate(%): <input type="text" name="conversion" size="10"><br>
 
-<form action="/action_page.php">
-  Ads Budgets:<br>
-  <input type="text" name="budgets" value="">
-  <br>
-  Cost per Acquisition / Cost per Lead:<br>
-  <input type="text" name="cpa" value="">
-  <br>
-  Conversion Rate<br>
-  <input type="text" name="conversion" value=""> %
-  <br>
-  Average Ticket Price <br>
-  <input type="text" name="conversion" value=""> 
-  <br>
 
-  <br>
-  <input type="submit" value="Submit" onsubmit = "calculateRatio" >
-</form> 
+        <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br>
 
+        <!--Result-->
+        Monthly Aquired Leads based on ads budget: <input type="text" name="lead" size="10"><br>
+        # of Customers based on conversion:<input type="text" name="customers" size="10"> <br>
+        Monthly Revenue: <input type="text" name="revenue" size="10"><br>
+        Final Score: <input type="text" name="score" size="10"><br>
+        This Means: <input type="text" name="meaning" size="25"><br>
+        <input type="reset" value="Reset" />
+    </form>
+
+    <script language="JavaScript">
+        
+function calculateScore() {
+    var budget = document.cvcform.budget.value
+    var cpa = document.cvcform.cpa.value
+    var atp = document.cvcform.ticket.value
+    var conversion = document.cvcform.conversion.value
+
+    //Calculate the monthly aquired leads
+
+    var leads = Math.floor(budget/cpa)
+
+    //Calculate the monthly aquired customers
+
+    var customers = Math.floor(leads*(conversion/100))
+
+    //Calculate Revenue
+
+    var revenue = customers * atp
+
+    //Calculate final score
+    var score = (revenue / budget).toFixed(2)
+
+    //show the final stats
+
+    document.cvcform.lead.value = leads
+    document.cvcform.customers.value = customers
+    document.cvcform.revenue.value = revenue
+    document.cvcform.score.value = score
+
+    //show value based on ratio
+    if(score < 5){
+        document.cvcform.meaning.value = "No."
+    }
+    else if(score > 5 && score < 7){
+        document.cvcform.meaning.value = "Risky, but worth a try."
+    }
+    else if(score > 7 && score < 9){
+        document.cvcform.meaning.value = "Not Bad."
+    }
+    else if(score > 10){
+        document.cvcform.meaning.value = "Sign it, Period."
+    }
+    else{
+        alert("Please Fill in everything correctly")
+    }
+}
+//-->
+</script>
 </body>
 </html>
