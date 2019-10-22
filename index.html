@@ -7,27 +7,45 @@
 <!DOCTYPE html>
 <html>
 <title>Hypewell Client Value Calculator</title>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"  type="text/css">
+</head>
 <body>
+    <div class = "container">
+        <h1>Hype Well Final ROI Calculator</h1>
+        <h2>Please fill out the following information to calculate the Return on Investment (ROI).</h2>
+        <form name="cvcform">
+            <h3>Monthly Ads Budget($):</h3>
+            <input type="text" name="budget" ><br>
+            <h3>Cost per Acquisition($):</h3>
+            <input type="text" name="cpa" ><br>
+            <h3>Average Ticket Price($):</h3>
+            <input type="text" name="ticket"><br>
+            <h3>Average Conversion Rate(%):</h3>
+            <input type="text" name="conversion"><br>
 
-    <form name="cvcform">
-        Monthly Ads Budget($): <input type="text" name="budget" size="10"><br>
-        Cost per Acquisition($): <input type="text" name="cpa" size="10"><br>
-        Average Ticket Price($): <input type="text" name="ticket" size="10"><br>
-        Average Conversion Rate(%): <input type="text" name="conversion" size="10"><br>
 
+            <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br><br>
 
-        <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br><br>
+            <!--Result-->
+            <div id = "result">
+                Monthly Aquired Leads based on ads budget: <span id="lead"></span><br>
+                # of Customers based on conversion: <span id = "customers"></span><br>
+                Monthly Revenue: <span id = "revenue"></span><br><br>
+                Profit generated with ads budget: <span id ="profit"></span><br>
 
-        <!--Result-->
-        Monthly Aquired Leads based on ads budget: <span id="lead"></span><br>
-        # of Customers based on conversion: <span id = "customers"></span><br>
-        Monthly Revenue: <span id = "revenue"></span><br><br>
-        Profit generated with ads budget: <span id ="profit"></span><br>
+                Final ROI: <span id = "score"></span><br>
+                This Means: <span id = "meaning"></span><br>
+                <input type="reset" value="Reset" />
+             </div>
+        </form>
+    </div>
 
-        Final ROI: <span id = "score"></span><br>
-        This Means: <span id = "meaning"></span><br>
-        <input type="reset" value="Reset" />
-    </form>
+    <div>
+        <img src="img/hypewell.png">
+    </div>
 
     <script language="JavaScript">
         
@@ -56,19 +74,28 @@ function calculateScore() {
     //show value based on ratio
     if(score < 1){
         document.getElementById("meaning").innerHTML= "Bad"
+        document.getElementById("result").style.display = "block";
     }
     else if(score > 1 && score < 2){
         document.getElementById("meaning").innerHTML = "Not Bad"
+        document.getElementById("result").style.display = "block";
     }
     else if(score > 2 && score < 5){
         document.getElementById("meaning").innerHTML = "Pretty Good"
+        document.getElementById("result").style.display = "block";
     }
     else if(score > 5){
         document.getElementById("meaning").innerHTML = "Extraordinary"
+        document.getElementById("result").style.display = "block";
     }
     else{
         alert("Please Fill in everything correctly")
     }
+
+    //Show the result
+
+
+
 }
 //-->
 </script>
