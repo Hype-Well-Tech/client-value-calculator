@@ -16,7 +16,7 @@
 <body>
     <div class = "container">
         <h1>Hype Well Final ROI Calculator</h1>
-        <h2>Please fill out the following information to calculate the Return on Investment (ROI).</h2>
+        <h4>Please fill out the following information to calculate the Return on Investment (ROI).</h4>
         <form name="cvcform">
             <h3>Monthly Ads Budget($):</h3>
             <input type="text" name="budget" ><br>
@@ -26,20 +26,30 @@
             <input type="text" name="ticket"><br>
             <h3>Average Conversion Rate(%):</h3>
             <input type="text" name="conversion"><br>
-
-
+            <br>
             <input type="button" value="Calculate Score" onClick="calculateScore()"><br><br><br>
 
             <!--Result-->
             <div id = "result">
-                Monthly Aquired Leads based on ads budget: <span id="lead"></span><br>
-                # of Customers based on conversion: <span id = "customers"></span><br>
-                Monthly Revenue: <span id = "revenue"></span><br><br>
-                Profit generated with ads budget: <span id ="profit"></span><br>
+                <h3>Monthly Aquired Leads based on ads budget:</h3> 
+                <span id="lead"></span><br>
+                <h3># of Customers based on conversion:</h3> 
+                <span id = "customers"></span><br>
+                <h3>Monthly Revenue:</h3> <span id = "revenue">
+                    
+                </span><br>
+                <h3>Profit generated with ads budget:</h3> 
+                <span id ="profit"></span><br>
 
-                Final ROI: <span id = "score"></span><br>
-                This Means: <span id = "meaning"></span><br>
-                <input type="reset" value="Reset" />
+                <br>
+
+                <h2>Final ROI:</h2> 
+                <span id = "score"></span><br>
+                <h2>This Means:</h2>
+                 <span id = "meaning"></span><br>
+                 <br><br>
+                <input type="button" value="Reset the form" onClick="refresh()"/>
+
              </div>
         </form>
     </div>
@@ -49,6 +59,11 @@
     </div>
 
     <script language="JavaScript">
+
+
+function refresh(){
+    location.reload();
+}
         
 function calculateScore() {
     var budget = document.cvcform.budget.value
@@ -67,33 +82,36 @@ function calculateScore() {
     //Calculate final score
     var score = (revenue / budget).toFixed(2)
     //show the final stats
-    document.getElementById("lead").innerHTML = leads;
-    document.getElementById("customers").innerHTML = customers;
-    document.getElementById("revenue").innerHTML = "$" + revenue;
+    document.getElementById("lead").innerHTML = leads + "/ Month";
+    document.getElementById("customers").innerHTML = customers + " / Month";
+    document.getElementById("revenue").innerHTML = "$" + revenue + " / Month";
+    document.getElementById("profit").innerHTML ="$ " + profit + " / Month";
     document.getElementById("score").innerHTML = score + " X";
-    document.getElementById("profit").innerHTML = profit;
     //show value based on ratio
     if(score < 1){
         document.getElementById("meaning").innerHTML= "Bad"
+        document.getElementById("meaning").style.color= "#d61334"
         document.getElementById("result").style.display = "block";
     }
-    else if(score > 1 && score < 2){
+    else if(score >= 1 && score < 2){
         document.getElementById("meaning").innerHTML = "Not Bad"
+        document.getElementById("meaning").style.color= "#de6a1d"
         document.getElementById("result").style.display = "block";
     }
-    else if(score > 2 && score < 5){
-        document.getElementById("meaning").innerHTML = "Pretty Good"
+    else if(score >= 2 && score < 5){
+        document.getElementById("meaning").innerHTML = "Pretty Good!"
+        document.getElementById("meaning").style.color= "#6fc211"
         document.getElementById("result").style.display = "block";
     }
-    else if(score > 5){
+    else if(score >= 5){
         document.getElementById("meaning").innerHTML = "Extraordinary"
+        document.getElementById("meaning").style.color= "#60b500"
         document.getElementById("result").style.display = "block";
     }
     else{
         alert("Please Fill in everything correctly")
     }
 
-    //Show the result
 
 
 

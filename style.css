@@ -9,7 +9,7 @@ body{
 input[type=text]{
 	width :80%;
 	padding: 5px 10px;
-	margin:5px;
+	margin:1px;
 	border:none;
 	border-bottom: 2px solid #d6d6d6;
 	font-size:24px;
@@ -19,7 +19,7 @@ input[type=text]:focus {
 	border-bottom: 3px solid #93c23d;
 }
 
-input[type=button], input [type=reset]{
+input[type=button], input[type=reset]{
 	background-color: #93c23d;
 	border:none;
 	color:#fff;
@@ -30,6 +30,10 @@ input[type=button], input [type=reset]{
 }
 
 
+.line{
+	border-bottom:2px solid #a7bac2;
+}
+
 .container{
 	background:#FFF;
 	margin: 30px auto;
@@ -39,6 +43,13 @@ input[type=button], input [type=reset]{
 
 #result {
 	display:none;
+}
+
+#result span{
+
+	font-size:32px;
+	font-weight:500;
+	color: #7ba62d;
 }
 
 
